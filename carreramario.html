@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Mario y Luigi Carrera</title>
+    <style>
+        body{
+          background-color:CD5C5C ;
+
+        }
+        h3{
+            position: absolute;
+            margin-right: 500px;
+        }
+
+       .Carrera {
+           height: 500px;
+           padding-top: 40px;
+           padding-left: 40px;
+           background-image: url("fondo.jpg");
+           background-size: cover;
+
+        }
+
+       img#player1 {
+          position: absolute;
+          margin-top: 10px;
+
+       }
+
+       img#player2 {
+         position: absolute;
+         margin-top: 90px;
+      }
+      img#player3 {
+         position: absolute;
+         margin-top: 175px;
+      }
+      img#player4 {
+         position: absolute;
+         margin-top: 260px;
+      }
+      .botones {
+        text-align: center;
+        width: 100%;
+        margin-top: 400px;
+      }
+
+   </style>
+</head>
+<body >
+
+    <h3>Carrera Mario Y Luigi</h3>
+
+    <div class="Carrera">
+	<img id="player1" src="mario.gif" width="80" height="80" alt="Oponente 1">
+	<img id="player2" src="luigi.gif" width="70" height="80" alt="Oponente 2">	
+    <img id="player3" src="pikachu.gif" width="90" height="90" alt="Oponente 3">	
+    <img id="player4" src="yoshi.gif" width="90" height="90" alt="Oponente 4">			
+		
+		
+	<div class="botones">
+        <button class="btn btn-danger mt-4"onclick="Predecir()">Apuesta</button>
+        <input class="btn btn-success mt-4"type="button" onclick='setInterval("correr()",150)' value="!START¡">	
+        <button class="btn btn-warning"onclick="restart()">Restart</button>
+
+	
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+
+      //seleccionar imágenes
+      var player1 = document.getElementById("player1");
+      var player2 = document.getElementById("player2");
+      var player3 = document.getElementById("player3");
+      var player4 = document.getElementById("player4");
+
+
+
+      //posiciones iniciales
+      var x_player1 = 0;
+      var x_player2 = 0;
+      var x_player3 = 0;
+      var x_player4 = 0;
+      var aleatorio = 0;
+      //Funcion para la velocidad aleatoria
+        function velocidadrandom() { 
+     var aleatorio=Math.floor(Math.random()*5)+1  
+       
+     return aleatorio;
+      }
+
+      //Funcion para la alert
+      function Predecir() {
+  let text;
+  let person = prompt("Quien va a ganar ?", "Ganador");
+ 
+  document.getElementById("demo").innerHTML = text;
+}
+
+//Funcion para el movimiento de los jugadores 
+      function correr() {
+      	   //movimiento player1
+	   if (x_player1 <= 85 && x_player1 >= 0) { //condición para que se mueva entre estos valores de la pantalla
+		x_player1 = x_player1 + velocidadrandom(); //movimiento del valor x
+		player1.style.left = x_player1 + "%"; //aplicar el valor obtenido al left del elemento
+
+	    }else{
+            x_player1 = 85
+            alert("Ha ganado mario");
+            
+        }
+
+        
+        
+	    
+
+	    //movimiento player2
+            if (x_player2 <= 85 && x_player2 >= 0) { 
+		 x_player2 = x_player2 + velocidadrandom(); 
+		 player2.style.left = x_player2 + "%"; 
+	    }else{
+            x_player2 = 85
+            alert("Ha ganado luigi");
+            
+ 
+        }
+          
+      
+	    //movimiento player3
+
+      if (x_player3 <= 85 && x_player3 >= 0) { 
+		 x_player3 = x_player3 + velocidadrandom(); 
+		 player3.style.left = x_player3 + "%"; 
+	    }else{
+            x_player3 = 85
+            alert("Ha ganado Pikachu");
+           
+        }
+        
+        //movimiento player4
+
+        if (x_player4 <= 85 && x_player4 >= 0) { 
+		 x_player4 = x_player4 + velocidadrandom(); 
+		 player4.style.left = x_player4 + "%"; 
+	    }else{
+            x_player4 = 85
+            alert("Ha ganado yoshi");
+ 
+        }
+          
+      }
+
+      //Funcion para el restart de las posiciones 
+      function restart(){
+        x_player1=0; //posicion inicial
+		 player1.style.left = x_player1 + "%";
+
+         x_player2=0; //posicion inicial
+		 player2.style.left = x_player2 + "%";
+
+         x_player3=0; //posicion inicial
+		 player3.style.left = x_player3 + "%";
+
+         x_player4=0; //posicion inicial
+		 player4.style.left = x_player4 + "%";
+      }
+
+
+  </script>
+</body>
+</html>
